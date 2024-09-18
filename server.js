@@ -17,8 +17,6 @@ function accessControlConfig(req, res) {
 }
 function CORS_Preflight(req, res) {
     if (req.method === 'OPTIONS') {
-        allowAllAnonymousAccess(res);
-        res.writeHead(204);
         res.end();
         console.log("Client browser CORS preflight check request");
         return true;
@@ -64,7 +62,6 @@ async function handleContactsServiceRequest(req, res) {
         let id = extract_Id_From_Request(req);
         switch (req.method) {
             case 'GET':
-                allowAllAnonymousAccess(res);
                 if (isNaN(id)) {
                     res.writeHead(200, { 'content-type': 'application/json' });
                     res.end(contactsJSON);
@@ -85,7 +82,6 @@ async function handleContactsServiceRequest(req, res) {
                 }
                 break;
             case 'POST':
-                allowAllAnonymousAccess(res);
                 let newContact = await getPayload(req);
                 validStatus = validateContact(newContact);
                 if (validStatus == '') {
@@ -105,7 +101,6 @@ async function handleContactsServiceRequest(req, res) {
                 }
                 break;
             case 'PUT':
-                allowAllAnonymousAccess(res);
                 let modifiedContact = await getPayload(req);
                 validStatus = validateContact(modifiedContact);
                 if (validStatus == '') {
@@ -144,7 +139,6 @@ async function handleContactsServiceRequest(req, res) {
                 }
                 break;
             case 'DELETE':
-                allowAllAnonymousAccess(res);
                 if (!isNaN(id)) {
                     let index = 0;
                     let oneDeleted = false;
@@ -188,7 +182,6 @@ async function handleBookmarkServiceRequest(req, res) {
         let id = extract_Id_From_Request(req);
         switch (req.method) {
             case 'GET':
-                allowAllAnonymousAccess(res);
                 if (isNaN(id)) {
                     res.writeHead(200, { 'content-type': 'application/json' });
                     res.end(bookmarksJSON);
@@ -209,7 +202,6 @@ async function handleBookmarkServiceRequest(req, res) {
                 }
                 break;
             case 'POST':
-                allowAllAnonymousAccess(res);
                 let newBookmark = await getPayload(req);
                 validStatus = validateBookmark(newBookmark);
                 if (validStatus == '') {
@@ -229,7 +221,6 @@ async function handleBookmarkServiceRequest(req, res) {
                 }
                 break;
             case 'PUT':
-                allowAllAnonymousAccess(res);
                 let modifiedBookmark = await getPayload(req);
                 validStatus = validateBookmark(modifiedBookmark);
                 if (validStatus == '') {
@@ -268,7 +259,6 @@ async function handleBookmarkServiceRequest(req, res) {
                 }
                 break;
             case 'DELETE':
-                allowAllAnonymousAccess(res);
                 if (!isNaN(id)) {
                     let index = 0;
                     let oneDeleted = false;
