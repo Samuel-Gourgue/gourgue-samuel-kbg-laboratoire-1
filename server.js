@@ -1,6 +1,8 @@
 import { createServer } from 'http';
 import fs from 'fs';
 
+
+
 function allowAllAnonymousAccess(res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', '*');
@@ -15,6 +17,12 @@ function accessControlConfig(req, res) {
 }
 function CORS_Preflight(req, res) {
     if (req.method === 'OPTIONS') {
+        allowAllAnonymousAccess(res);
+        res.writeHead(204, {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+        });
         res.end();
         console.log("Client browser CORS preflight check request");
         return true;
