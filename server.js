@@ -1,6 +1,8 @@
 import { createServer } from 'http';
 import fs from 'fs';
 
+
+
 function allowAllAnonymousAccess(res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', '*');
