@@ -22,5 +22,35 @@
         "Title": "Azure",
         "Url": "https://azure.microsoft.com/fr-ca",
         "Category": "Cloud"
+    },
+    {
+        "Id": 5,
+        "Title": "Glitch",
+        "Url": "https://glitch.com",
+        "Category": "Cloud"
+    },
+    {
+        "Id": 6,
+        "Title": "GitHub",
+        "Url": "https://github.com",
+        "Category": "Cloud"
+    },
+    {
+        "Id": 7,
+        "Title": "Facebook",
+        "Url": "https://facebook.com",
+        "Category": "Réseaux sociaux"
+    },
+    {
+        "Id": 8,
+        "Title": "Instagram",
+        "Url": "https://instagram.com",
+        "Category": "Réseaux sociaux"
+    },
+    {
+        "Id": 9,
+        "Title": "Tiktok",
+        "Url": "https://tiktok.com",
+        "Category": "Réseaux sociaux"
     }
 ]

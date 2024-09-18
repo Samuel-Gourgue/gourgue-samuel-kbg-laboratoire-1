@@ -24,8 +24,13 @@ function API_SaveBookmark(bookmark, create) {
             type: create ? "POST" : "PUT",
             contentType: 'application/json',
             data: JSON.stringify(bookmark),
-            success: (/*data*/) => { resolve(true); },
-            error: (/*xhr*/) => { resolve(false /*xhr.status*/); }
+            success: () => {
+                resolve(true);
+            },
+            error: (xhr) => {
+                console.error("Error saving bookmark:", xhr.status, xhr.responseText);
+                resolve(false);
+            }
         });
     });
 }

@@ -245,8 +245,8 @@ function renderBookmarkForm(bookmark = null) {
     
     $("#actionTitle").text(create ? "Création" : "Modification");
     
-    $("#content").append(`
-        <form class="form" id="bookmarkForm">
+    $("#content").append(
+        `<form class="form" id="bookmarkForm">
             <input type="hidden" name="Id" value="${bookmark.Id}"/>
             <img id="faviconPreview" src="${getFaviconUrl(bookmark.Url)}" alt="Favicon Preview" style="display: block; width: 64px; height: 64px; margin-bottom: 10px;"/>
             <label for="Title" class="form-label">Titre </label>
@@ -280,14 +280,12 @@ function renderBookmarkForm(bookmark = null) {
             <hr>
             <input type="submit" value="Enregistrer" id="saveBookmark" class="btn btn-primary">
             <input type="button" value="Annuler" id="cancel" class="btn btn-secondary">
-        </form>
-    `);
+        </form>`
+    );
     updateFaviconPreview();
     $('#bookmarkForm').on("submit", async function (event) {
         event.preventDefault();
-        let formData = new FormData(this);
-        
-        showWaitingGif();
+        let formData = getFormData($(this));
         let result = await API_SaveBookmark(formData, create);
         if (result)
             renderBookmarks();
@@ -298,6 +296,7 @@ function renderBookmarkForm(bookmark = null) {
         renderBookmarks();
     });
 }
+
 
 function getFormData($form) {
     const removeTag = new RegExp("(<[a-zA-Z0-9]+>)|(</[a-zA-Z0-9]+>)", "g");
