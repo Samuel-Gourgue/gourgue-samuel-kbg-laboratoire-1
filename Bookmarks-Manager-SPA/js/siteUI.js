@@ -32,7 +32,6 @@ function updateDropDownMenu(categories) {
         </div>
     `);
 
-    // Ajouter les événements pour les éléments du menu
     $('#aboutCmd').on("click", function () {
         renderAbout();
     });
